@@ -19,7 +19,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="Сервис управления задачами",
+app = FastAPI(title="Сервис анализа жалоб",
                   description="""
 # Тестовое задание
 ### Модули сервиса:

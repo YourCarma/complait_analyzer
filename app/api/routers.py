@@ -1,5 +1,5 @@
-from modules.baffler.router import router as baffler_router
+from modules.complait_analyzer.router import router as complait_analyzer_router
 
 routers = [
-    baffler_router,
+    complait_analyzer_router,
 ]

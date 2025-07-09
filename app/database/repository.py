@@ -159,14 +159,18 @@ class DatabaseRepository(Generic[Model]):
 
     async def update(self, name: str, value: Any, *expressions:
                      BinaryExpression) -> Model:
-        result = (await
-                  self.session.scalars(select(self.model).where(*expressions)
-                                       )).one()
-        setattr(
-            result, name, value
-        )  # нельзя так просто взять и изменить аттрибут (instance это не словарь, это scalar object)
-        await self.session.flush()
-        return result
+        try:
+            result = (await
+                    self.session.scalars(select(self.model).where(*expressions)
+                                        )).one()
+            setattr(
+                result, name, value
+            )  # нельзя так просто взять и изменить аттрибут (instance это не словарь, это scalar object)
+            await self.session.flush()
+            return result
+        except NoResultFound as e:
+            logger.error("Объекта на обновление не существует не существует!")
+            return None
 
     async def delete_instance_list(self, instances) -> None:
         for instance in instances:

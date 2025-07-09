@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=Path(__file__).parent.parent.joinpath(".env.production").__str__())
+        env_file=Path(__file__).parent.parent.joinpath(".env.dev").__str__())
     # Service configs
     HOST: Optional[str] = "0.0.0.0"
     PORT: Optional[int] = 65000
@@ -18,6 +18,10 @@ class Settings(BaseSettings):
     POSTGRES_DB: Optional[str]
     POSTGRES_PORT: Optional[str]
 
+    #External APIS
+    API_LAYER_SENTIMENT_KEY: Optional[str]
+    OPENROUTER_API_KEY: Optional[str]
+    
     @property
     def DB_URL(cls):
         return f"postgresql+asyncpg://{cls.POSTGRES_USER}:{cls.POSTGRES_PASSWORD}@{cls.POSTGRES_HOST}:{cls.POSTGRES_PORT}/{cls.POSTGRES_DB}"

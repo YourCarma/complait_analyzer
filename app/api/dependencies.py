@@ -3,6 +3,6 @@ from typing import Annotated
 from fastapi import Depends
 
 from unitofwork import AbstractUnitOfWork
-from modules.baffler.uow import BafflerUnitofWork
+from modules.complait_analyzer.uow import ComplaitUnitofWork
 
-UOWBaffler = Annotated[AbstractUnitOfWork, Depends(BafflerUnitofWork)]
+UOWComplaitManager = Annotated[AbstractUnitOfWork, Depends(ComplaitUnitofWork)]
