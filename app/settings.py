@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=Path(__file__).parent.parent.joinpath(".env.dev").__str__())
+        env_file=Path(__file__).parent.parent.joinpath(".env.prodution").__str__())
     # Service configs
     HOST: Optional[str] = "0.0.0.0"
     PORT: Optional[int] = 65000
@@ -20,6 +20,7 @@ class Settings(BaseSettings):
 
     #External APIS
     API_LAYER_SENTIMENT_KEY: Optional[str]
+    OPENAI_BASE_URL: Optional[str]
     OPENROUTER_API_KEY: Optional[str]
     
     @property

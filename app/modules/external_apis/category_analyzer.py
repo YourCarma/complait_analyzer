@@ -12,7 +12,7 @@ class CategoryAnalyzer:
     
     def __init__(self):
         self.client = OpenAI(
-            base_url="https://openrouter.ai/api/v1",
+            base_url=settings.OPENAI_BASE_URL,
             api_key=settings.OPENROUTER_API_KEY,
             )
         self.model = "openai/gpt-3.5-turbo-0613"
