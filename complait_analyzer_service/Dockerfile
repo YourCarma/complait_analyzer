@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 USER root
 
-WORKDIR /hightalent_reservation
+WORKDIR /complait_analyzer
 COPY pyproject.toml poetry.lock ./
 RUN python3 -m pip install poetry 
 RUN poetry config virtualenvs.create false

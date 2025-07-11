@@ -16,6 +16,9 @@ class CategoryAnalyzer:
             api_key=settings.OPENROUTER_API_KEY,
             )
         self.model = "openai/gpt-3.5-turbo-0613"
+        logger.debug(
+            f"Создан клиент: {settings.OPENAI_BASE_URL}"
+        )
         
     async def get_category(self, text: str) -> str:
         try:
@@ -47,6 +50,6 @@ class CategoryAnalyzer:
                 f"Ошибка при определении категории: {e}"
             )
             logger.warning(
-                "Категория: \"unknown\""
+                "Категория по умолчанию: \"другое\""
             )
-            return "unknown"
+            return "другое"

@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=Path(__file__).parent.parent.joinpath(".env.prodution").__str__())
+        env_file=Path(__file__).parent.parent.joinpath(".env.production").__str__())
     # Service configs
     HOST: Optional[str] = "0.0.0.0"
     PORT: Optional[int] = 65000

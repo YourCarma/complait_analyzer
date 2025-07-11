@@ -20,7 +20,7 @@ router = APIRouter(prefix="/api",
 
 @router.get("/complaits", 
             tags=["Жалобы"],
-            summary="Получение всех задач")
+            summary="Получение всех жалоб")
 async def get_tables(uow: UOWComplaitManager) -> list[Complait]:
     instance = await ComplaitAnalyzerService().get_complaits(uow)
     return instance
@@ -79,7 +79,7 @@ async def change_complait_status(data: ChangeComplaitStatus, uow: UOWComplaitMan
 
 @router.get("/actual_complaits",
             tags=["Жалобы"],
-            summary="Получение открытых жалоб за псоелдний час")
+            summary="Получение открытых жалоб за последний час")
 async def get_actual_complaits(uow: UOWComplaitManager) -> list[Complait]:
     instance = await ComplaitAnalyzerService().get_actual_complaits(uow)
     return instance
